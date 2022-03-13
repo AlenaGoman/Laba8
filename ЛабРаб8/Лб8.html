@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<script>
+			var x=10, y = 10;
+			var canvas;
+			var ctx;
+			var isDown = false;
+			
+		function init() {
+		canvas = document.getElementById('canvas')
+		ctx = canvas.getContext('2d');
+		ctx.strokeRect(0,0,400,200);
+		ctx.fillStyle = 'blue';
+		document.addEventListener("mouseup", handleUp);
+		document.addEventListener("mousedown", handleDown);
+		document.addEventListener("mousemove", handleMoved);
+		}
+		
+		function handleUp(event) {
+		isDown = false;
+		ctx.fillStyle = 'blue';
+		}
+		
+		function handleDown(event) {
+		isDown = true;
+		ctx.fillStyle = 'red';
+		}
+		
+		function handleMoved(event) {
+			ctx.fillRect(x,y,20,20);
+			x = event.offsetX;
+			y = event.offsetY;}
+			
+			</script>
+	</head>
+	<body onload="init();">
+		<canvas id="canvas" width="400" height="200">
+		</canvas>
+	</body>
+</html>
